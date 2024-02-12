@@ -15,9 +15,8 @@ IFS=' ' read -ra ADDR <<< "$env_vars"
 for i in "${ADDR[@]}"; do
     IFS='=' read -ra KV <<< "$i"
     aws elasticbeanstalk update-environment --application-name $application_name --environment-name $environment_name --option-settings Namespace=aws:elasticbeanstalk:application:environment,OptionName=${KV[0]},Value=${KV[1]}
-done
-
-while [[ "$(aws elasticbeanstalk describe-environments --application-name $application_name --environment-names $environment_name --query 'Environments[0].Status' --output text)" != "Ready" ]]; do
-    echo "Waiting for environment to become Ready..."
-    sleep 20
+    while [[ "$(aws elasticbeanstalk describe-environments --application-name $application_name --environment-names $environment_name --query 'Environments[0].Status' --output text)" != "Ready" ]]; do
+        echo "Waiting for environment to become Ready..."
+        sleep 20
+    done
 done
