@@ -31,7 +31,7 @@ This action deploys an application to AWS Elastic Beanstalk.
 ## Example usage
 
 ```yaml
-uses: SociallyAwkk/set-aws-beanstalk-env-vars-action@v1
+uses: SociallyAwkk/set-aws-beanstalk-env-vars-action@v1 
 with:
   aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
   aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
