@@ -1,0 +1,31 @@
+name: 'Set AWS Elastic Beanstalk Environment Variables'
+description: 'Sets environment variables in an AWS Elastic Beanstalk environment'
+inputs:
+  aws_access_key_id:
+    description: 'AWS Access Key ID'
+    required: true
+  aws_secret_access_key:
+    description: 'AWS Secret Access Key'
+    required: true
+  aws_region:
+    description: 'AWS Region'
+    required: true
+  application_name:
+    description: 'AWS Elastic Beanstalk Application Name'
+    required: true
+  environment_name:
+    description: 'AWS Elastic Beanstalk Environment Name'
+    required: true
+  env_vars:
+    description: 'Environment variables to set, in the format VAR1=value1 VAR2=value2'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.aws_access_key_id }}
+    - ${{ inputs.aws_secret_access_key }}
+    - ${{ inputs.aws_region }}
+    - ${{ inputs.application_name }}
+    - ${{ inputs.environment_name }}
+    - ${{ inputs.env_vars }}
