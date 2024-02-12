@@ -1,5 +1,8 @@
 name: 'Set AWS Elastic Beanstalk Environment Variables'
 description: 'Sets environment variables in an AWS Elastic Beanstalk environment'
+branding:
+  color: 'orange'
+  icon: 'upload'
 inputs:
   aws_access_key_id:
     description: 'AWS Access Key ID'
