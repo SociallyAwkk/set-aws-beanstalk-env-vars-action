@@ -1,6 +1,6 @@
 # AWS Elastic Beanstalk Deployment Action
 
-This action deploys an application to AWS Elastic Beanstalk.
+This action updates the Environment Variables for an Elastic Beanstalk environment.
 
 ## Inputs
 
@@ -31,11 +31,13 @@ This action deploys an application to AWS Elastic Beanstalk.
 ## Example usage
 
 ```yaml
-uses: SociallyAwkk/set-aws-beanstalk-env-vars-action@v1 
-with:
-  aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  aws_region: 'us-west-2'
-  application_name: 'your-application-name'
-  environment_name: 'your-environment-name'
-  env_vars: 'KEY1=VALUE1 KEY2=VALUE2'
+steps:
+  - name: Set AWS Elastic Beanstalk Environment Variables
+    uses: SociallyAwkk/set-aws-beanstalk-env-vars-action@v1.0.0
+    with:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws_region: 'us-east-1'
+      application_name: 'my-application'
+      environment_name: 'my-environment'
+      env_vars: 'VAR1=value1 VAR2=value2'
